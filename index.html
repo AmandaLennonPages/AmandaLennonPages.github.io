@@ -1,8 +1,11 @@
+<!DOCTYPE html>
 <html>
 <header><title>Journalism Projects</title>
-<script src="sheetrock.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://chriszarate.github.io/sheetrock/dist/sheetrock.min.js"> </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script>
-	var spreadsheet = "https://docs.google.com/spreadsheets/d/153hC-dT47etNP5bvxzeAlE0b6PaXm7UQ4duvN7wUzFc/edit?usp=sharing"
+	var spreadsheet = "https://docs.google.com/spreadsheets/d/153hC-dT47etNP5bvxzeAlE0b6PaXm7UQ4duvN7wUzFc/edit#gid=0"
 
 	$(document).ready(function(){
 		$('#classes').sheetrock({
@@ -12,6 +15,6 @@
 </script> 
 </header>
 <body>
-
+ <table id="classes" class="table table-condensed table-striped"></table>
 </body>
 </html>
