@@ -1,0 +1,102 @@
+<html>
+<head>
+	<title>Contact upload form</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://chriszarate.github.io/sheetrock/dist/sheetrock.min.js"> </script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+	<script>
+		var spreadsheet = 'https://docs.google.com/spreadsheets/d/14Jst4E2dsp5TAamRVC5vTn0gZsRAASzPSDeX0CS6d2k/edit#gid=0';
+
+		$(document).ready(function(){
+			var HRTemplate = Handlebars.compile($('#hr-template').html());
+			$('#categories').sheetrock({
+				url: spreadsheet,
+				rowTemplate: HRTemplate
+			});
+		});
+	</script> 
+
+
+</head>
+<body>
+
+	<div class="container">
+		<form id="contactForm" action="" method="POST" target = no-target>
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input type="text" class="form-control" id="firstName" placeholder="Enter First Name">
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input type="text" class="form-control" id="lastName" placeholder="Enter Last Name">
+			</div>
+			<div class="form-group">
+				<label for="contactNumber">Contact Number</label>
+				<input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number with country code, e.g. +44">
+			</div>
+			<div class="form-group">
+				<label for="hr-template">Select category</label>
+				<select class="form-control" id="categories">
+
+					<script id="hr-template" type="text/x-handlebars-template">
+						<option>{{cells.---Category---}}</option>
+					</script>
+
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="commentArea">Comment</label>
+				<textarea class="form-control" id="commentArea" rows="3"></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<label id="successInput"></label>
+	</div>
+
+	<iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+	<script>
+		$('#contactForm').on('submit', function(){
+
+			var baseURL = "https://docs.google.com/forms/d/e/1FAIpQLSedudsLgSKaZMyn9B3d1ewa0IR6W4dD_HbG_TJt1sD6C_H3oQ/formResponse?";
+
+			var submitRef = "&submit=Submit";
+
+			var thisFormFirstName = encodeURIComponent($("#firstName").val());
+			var glFormFirstNameID = "entry.1767939395";
+
+			var thisFormLastName = encodeURIComponent($("#lastName").val());
+			var glFormLastNameID = "entry.1735191332";
+
+			var thisFormContactNumber = encodeURIComponent($("#contactNumber").val());
+			var glFormContactNumberID = "entry.1458266201";
+
+			var thisFormCategory = encodeURIComponent($("#categories").val());
+			var glFormCategoryID = "entry.1302464060";
+
+			var thisFormComment = encodeURIComponent($("#commentArea").val());
+			var glFormCommentID = "entry.1604609339";
+
+			var submitURL = (baseURL + glFormFirstNameID + "=" + thisFormFirstName
+				+ "&" + glFormLastNameID + "=" + thisFormLastName 
+				+ "&" + glFormContactNumberID + "=" + thisFormContactNumber
+				+ "&" + glFormCategoryID + "=" + thisFormCategory
+				+ "&" + glFormCommentID + "=" + thisFormComment
+				+ submitRef);
+
+			$(this)[0].action=submitURL;
+
+			setTimeout(redirectFunction, 500)
+		});
+	</script>
+
+	<script>
+		function redirectFunction() {
+			window.location.replace("AddedContactSuccess.html");
+		}
+	</script>
+
+</body>
+</html>

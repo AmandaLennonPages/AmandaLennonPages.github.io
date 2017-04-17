@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-<header><title>Journalism Projects</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://chriszarate.github.io/sheetrock/dist/sheetrock.min.js"> </script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script>
-	var spreadsheet = "https://docs.google.com/spreadsheets/d/153hC-dT47etNP5bvxzeAlE0b6PaXm7UQ4duvN7wUzFc/edit#gid=0"
-
-	$(document).ready(function(){
-		$('#classes').sheetrock({
-			url: spreadsheet
-		});
-	});
-</script> 
+<header>
+	<title>Journalism Project</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<script src="https://chriszarate.github.io/sheetrock/dist/sheetrock.min.js"> </script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </header>
 <body>
- <table id="classes" class="table table-condensed table-striped"></table>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-md-4 col-md-offset-4">
+				<h1 class="text-center login-title">What would you like to do?</h1>
+				<div class="account-wall">
+					<img class="profile-img" src="clipArtJournalist.jpeg"
+					alt="">
+					<div class="col-sm-6 col-md-4 col-md-offset-3">
+						<a href="UploadNewContactForm.html" class="btn btn-primary"> New contact </a>
+					</div>
+					<div class="col-sm-6 col-md-4 col-md-offset-3">
+						<a href="ViewDirectory.html" class="btn btn-info">View directory</a>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
